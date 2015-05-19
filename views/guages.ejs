@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Guages</title>
+<link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body onLoad="guageInit()">
+
+<script type="text/javascript" src="/javascripts/guage.js"></script>
+
+	<span id="guageDiv" class="guageDiv" name="guageDiv">
+ 		<span id="currentGaugeContainer"></span>
+		<span id="voltageGaugeContainer"></span>
+		<span id="powerGaugeContainer"></span>
+		<span id="rpmGaugeContainer"></span>
+
+	</span>
+
+   
+   <script>
+  // function guageInit() {
+  console.log('update nothing ');
+
+	createGauge("voltage", "Voltage", "mV", 0, 15000);
+	createGauge("current", "Current", "mA", 0, 1300);
+	createGauge("rpm", "RPM", "rpm", 0, 8000);
+	createGauge("power", "Power", "mW", 0, 3000);
+
+   
+console.log('update nothing ');
+
+var dataItem;
+	var iosocket = io.connect('http://127.0.0.1:1337');
+
+	iosocket.on('connect', function (data) {
+		
+	//	console.log('guage client connected ');
+	//	console.log('guage connected data ' + data);
+
+			jQuery(function ($) {
+				iosocket.on('updateData', function (data) {
+		//			console.log('gauge update ' + data);
+					dataItem = JSON.parse(data);
+		//			console.log('updateData current ' + dataItem.current);
+
+				// var realRPM = Math.floor(((dataItem.rpm * 3.3)/1024)*1000); //*666.667);
+
+				updateGauge("current", dataItem.current);
+				updateGauge("voltage", dataItem.voltage);
+				updateGauge("rpm", dataItem.rpm);
+				updateGauge("power", dataItem.power);
+				 
+				});
+			});
+	});
+	
+//	}
+	
+	   </script>
+	   </body>
+</html>

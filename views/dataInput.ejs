@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DataInput</title>
+<link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body onLoad="dataInputFunction()">
+   
+   
+   <script>
+  // function dataInputFunction() {
+  
+ 
+		// $('.DIstartButton').on("click", function(event){
+		     //   iosocket.emit('sliderval',3 );
+  			//		event.preventDefault();					
+					var posting = $.post( '/dataInput', { dataInputValue: 'on' } );
+// console.log('dataInputPost now');
+					posting.done(function( data ) {
+					console.log('client dataInput post done ');
+					});
+				// });	
+				
+		/*
+		$('.DIstopButton').on("click", function(event){
+		     //   iosocket.emit('sliderval',3 );
+  					event.preventDefault();					
+					var posting = $.post( '/dataInput', { dataInputValue: 'off' } );
+// console.log('dataInputPost now');
+					posting.done(function( data ) {
+//						console.log('client dataInput post done ');
+					});
+				});	
+				*/
+				
+// };
+				
+</script>
+<script> /*
+<div class=dataInputDiv>
+
+<title><%= title %></title>
+<div class="DIstartButtonDiv">
+<form name="DIstartButton" id"startButton" class="DIstartButton" action="/dataInput" method="post"></form>
+	<span><button class="DIstartButton" id="DIstartButton" name="DIstartButton" >Start Data</button> </span>
+</div>
+<div class="DIstopButtonDiv">
+	<form name="DIstopButton" id"stopButton" class="DIstopButton" action="/dataInput" method="post"></form>
+	<span><button class="DIstopButton" id="DIstopButton" name="DIstopButton" >Stop Data</button> </span>
+
+		
+</div>
+</form>
+*/ </script>
+
+</body>
+</html>
