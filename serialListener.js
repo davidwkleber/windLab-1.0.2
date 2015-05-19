@@ -8,6 +8,17 @@ var serialport = require("serialport");
 var SerialPort = serialport.SerialPort; // localize object constructor
 // var SerialPort = require("serialport").SerialPort
 
+var simpleJson = {
+  "date": "19/5/2015:16:6:66:666",
+  "voltage":     0,
+  "current":    6,
+  "rpm":    0,
+  "power":    0,
+  "timestamp": 3125413672,
+  "windSpeed": 0,
+  "pitchAngle": -10,
+  "dummyLoad": 0
+ }
 console.log('ports '+ portConfig.stepper.port +" "+ portConfig.windSpeed.port + " " + portConfig.measurement.port);
 
    
@@ -80,28 +91,24 @@ console.log('serialListener: setup connection now');
 
 io.sockets.on('connection', function(socket){
   console.log('a user connected');
+  	socket.emit('connect', simpleJson );
+
     socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+  
 
- /*
- io.emit('updateData', {
-			dataSource: "something",
-			dataInputData: "something else \n"
-		});
-		*/
 });
-	io.on('sliderval', function(data) {
-		console.log('DataInput : '+data);
-	});
+
 		io.on('updateData', function(data) {
-	//	console.log('DataInput UPDATE: '+data);
+		console.log('DataInput UPDATE: '+data);
 	});
-		io.emit('updateData', {
+/*		
+	io.emit('updateData', {
 			dataSource: "somethig",
 			dataInputData: "something else \n"
 		});
-
+*/
  	
  
    DIserialPort.on("open", function () {
@@ -148,7 +155,7 @@ io.sockets.on('connection', function(socket){
  var chunksIn = 0;
  
     DIserialPort.on('data', function(data) {
-//				console.log('DataInput : '+data);
+	//			console.log('DataInput : '+data);
 
 		chunksIn = chunksIn+1;
         receivedData += data.toString();
@@ -192,7 +199,7 @@ io.sockets.on('connection', function(socket){
 			sendJSON += "  \"dummyLoad\": "+dummyLoadValueText+"\n";
 			sendJSON += "}";
 			
-//			 console.log( "serialListener send JSON : \n"+sendJSON);	
+//		 console.log( "serialListener send JSON : \n"+sendJSON);	
 
 			io.emit('updateData', sendJSON);
 
