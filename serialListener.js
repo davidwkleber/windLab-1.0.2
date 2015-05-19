@@ -71,7 +71,7 @@ function serialListener()
     var sendData = "";
 	var delimiter = "\n";
 	
- console.log('serialListenerInit called ');
+ // console.log('serialListenerInit called ');
 
 var io = require('socket.io').listen(1337);
 
@@ -84,12 +84,12 @@ io.sockets.on('connection', function(socket){
     console.log('user disconnected');
   });
 
- 
+ /*
  io.emit('updateData', {
 			dataSource: "something",
 			dataInputData: "something else \n"
 		});
-		
+		*/
 });
 	io.on('sliderval', function(data) {
 		console.log('DataInput : '+data);
