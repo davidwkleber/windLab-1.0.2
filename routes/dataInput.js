@@ -65,7 +65,7 @@ console.log('dataInput value in post is now: ', req.param('dataInputValue', null
 	else var serialCall = 'S' + '\n';
 
 	console.log('dataInput serialCall: '+serialCall);
-	 	res.render('index', {title: 'Wind Lab', seeValue: dataInputValue }); 
+	// 	res.render('index', {title: 'Wind Lab', seeValue: dataInputValue }); 
 	DIserialListener.write('DI', serialCall);
 
 			console.log('dataInput serialCall done: '+serialCall);

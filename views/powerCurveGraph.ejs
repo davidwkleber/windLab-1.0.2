@@ -98,14 +98,19 @@
 		var inData_limit = 10;
 			 outData = []; 
 		
-			var powerCurveGraphSocket = io.connect('http://127.0.0.1:1337');
-
-			powerCurveGraphSocket.on('connect', function (connectData) {
-					console.log('powerCurve client connected ');
-			//		console.log('lineGraph connected data ' + data);
-
-				
+			
 			jQuery(function ($) {
+				console.log("powerCurveGraph updateData");
+
+				var powerCurveGraphSocket = io.connect('http://127.0.0.1:1337');
+				console.log(powerCurveGraphSocket);
+			
+				powerCurveGraphSocket.on('connect', function (connectData) {
+						console.log('powerCurve client connected ');
+						console.log('in power graph connect '+powerCurveGraphSocket.json);
+				//		console.log('lineGraph connected data ' + data);
+
+				});
 				powerCurveGraphSocket.on('updateData', function (dataIn) {
 				
 					// save the new JSON data to a buffer
@@ -114,9 +119,9 @@
 					if ( inData.length > inData_limit ) {
 						inData.shift();
 					}
-			//		console.log("inData size: "+inData.length);
+					// console.log("inData size: "+inData.length);
 
-				//	console.log("inData: "+inData);
+	//				console.log("inData: "+inData);
 					
 					
 				 // context.clearRect(0, 0, chart.width, chart.height);
@@ -153,7 +158,7 @@
 
 			// context.clearRect(0, 0, chart.width, chart.height);
 							chart.render();
-});
+
 				});
 		});
 			var plotData = []; 

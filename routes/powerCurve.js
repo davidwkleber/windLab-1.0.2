@@ -21,9 +21,20 @@ console.log('powerCurve get');
 
 router.post('/', function(req, res, next){
 
+	socketCmd = req.param('socketCmd', null);
+	console.log("powerCurve Post, socketCmd: "+socketCmd);
+	
+	switch (socketCmd) {
+		case 'disconnect':
+			// powerCurveGraphSocket.disconnect();
+			break;
+		default:
+			break;
+		}
+
 console.log('powerCurve post');
  
-	res.render('powerCurveGraph');
+//	res.render('powerCurveGraph');
 
 })
 

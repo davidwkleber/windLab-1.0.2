@@ -5,13 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// dataFrameContent = 'lineGraph';
-dataFrameContent = 'powerCurveGraph';
+dataFrameContent = 'lineGraph';
+// dataFrameContent = 'powerCurveGraph';
 iFrameContent = 'infoFrame';
 // var serialListener = require('./lib/serialListener');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var pitchAngle = require('./routes/pitchAngle');
 var windSpeed = require('./routes/windSpeed');
@@ -49,7 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('index', routes);
 
-app.use('/users', users);
 
 app.use('/pitchAngle', pitchAngle);
 app.use('/windSpeed', windSpeed);

@@ -90,19 +90,22 @@ var io = require('socket.io').listen(1337);
 console.log('serialListener: setup connection now');
 
 io.sockets.on('connection', function(socket){
-  console.log('a user connected');
-  	socket.emit('connect', simpleJson );
+	console.log('a user connected');
+	console.log('connected socket: '+socket.id);
+
 
     socket.on('disconnect', function(){
     console.log('user disconnected');
+    console.log('socket disconnected' + socket.id+ " " + socket.disconnected);
   });
   
 
 });
-
+/*
 		io.on('updateData', function(data) {
 		console.log('DataInput UPDATE: '+data);
 	});
+	*/
 /*		
 	io.emit('updateData', {
 			dataSource: "somethig",
@@ -155,7 +158,7 @@ io.sockets.on('connection', function(socket){
  var chunksIn = 0;
  
     DIserialPort.on('data', function(data) {
-	//			console.log('DataInput : '+data);
+//			console.log('DataInput : '+data);
 
 		chunksIn = chunksIn+1;
         receivedData += data.toString();

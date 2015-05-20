@@ -48,8 +48,9 @@
         <span class="recordButtons-inner"></span>
         <span class="recordButtons-switch"></span>
     </label>
+	<!--
 		<script type="text/javascript" src="/javascripts/recordScript.js"></script>
-
+-->
 </div>
 
 		<script>
@@ -94,17 +95,20 @@
 		});	
 						var dataItem;
 			lineGraphSocket = io.connect('http://127.0.0.1:1337');
+					console.log(lineGraphSocket);
 
 			lineGraphSocket.on('connect', function (connectData) {
-					console.log('lineGraph client connected '+connectData);
+					console.log('in line graph connect '+lineGraphSocket.json);
+					console.log('lineGraph client connected ');
 			//		console.log('lineGraph connected data ' + data);
 
-				
-		//	jQuery(function ($) {
+			});
+
+			jQuery(function ($) {
 				lineGraphSocket.on('updateData', function (data) {
-					console.log('lineGraph update: ' + data);
+			//		console.log('lineGraph update: ' + data);
 					dataItem = JSON.parse(data);
-			//		console.log('lineGraph updateData power ' + dataItem.power);
+					console.log('lineGraph updateData power ' + dataItem.power);
 
 					switch (dataSelected) {
 						case 'power':
@@ -130,7 +134,6 @@
 					}
 				 
 				});
-		//	});
 		
 				});
 				

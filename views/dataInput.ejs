@@ -16,7 +16,8 @@
  
 		// $('.DIstartButton').on("click", function(event){
 		     //   iosocket.emit('sliderval',3 );
-  			//		event.preventDefault();					
+  			//		event.preventDefault();	
+					console.log('/dataInput post will be called ');			
 					var posting = $.post( '/dataInput', { dataInputValue: 'on' } );
 // console.log('dataInputPost now');
 					posting.done(function( data ) {
