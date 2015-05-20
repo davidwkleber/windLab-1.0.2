@@ -93,7 +93,7 @@
 		//	console.log('dataSelected item is: '+dataSelected);
 		});	
 						var dataItem;
-			var lineGraphSocket = io.connect('http://127.0.0.1:1337');
+			lineGraphSocket = io.connect('http://127.0.0.1:1337');
 
 			lineGraphSocket.on('connect', function (connectData) {
 					console.log('lineGraph client connected '+connectData);

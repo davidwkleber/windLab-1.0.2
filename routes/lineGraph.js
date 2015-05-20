@@ -27,9 +27,16 @@ console.log('lineGraph post');
 })
 
 router.put('/', function(req, res, next){
-	var spinnerValue = req.body.value;
-	res.seeValue = req.body.value;
-	res.render('timeDomainGraph');
+	var socketCmd = req.param('socketCmd', null);
+		switch (socketCmd) {
+			case 'disconnect':
+				lineGraphSocket.disconnect();
+			break;
+		default:
+			console.log("put lineGraph socketCmd: "+socketCmd);
+			break;
+		}
+	// res.render('timeDomainGraph');
 })
 
 router.get('/about', function(req, res){

@@ -22,7 +22,8 @@ console.log('powerCurve get');
 router.post('/', function(req, res, next){
 
 console.log('powerCurve post');
-
+ 
+	res.render('powerCurveGraph');
 
 })
 
