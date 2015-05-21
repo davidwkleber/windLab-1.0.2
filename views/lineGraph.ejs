@@ -91,29 +91,49 @@
 			//				console.log('graph default');
 							changeAxis( powerMax );
 					}
-		//	console.log('dataSelected item is: '+dataSelected);
+			console.log('dataSelected item is: '+dataSelected);
 		});	
-						var dataItem;
-			lineGraphSocket = io.connect('http://127.0.0.1:1337');
-					console.log(lineGraphSocket);
+		
+		
+		var dataItem;
+//	jQuery(function ($) {
+
+			if ( lineGraphSocket ) {
+				console.log('in line graph connect '+lineGraphSocket);
+				if ( lineGraphSocket.connected == 'true' ) {
+								console.log('in line graph connect '+lineGraphSocket.connected);
+				} else {
+					lineGraphSocket = io.connect('http://127.0.0.1:1337');
+				}
+			} else {
+							console.log('no line graph socket');
+
+				 var lineGraphSocket = io.connect('http://127.0.0.1:1337');
+			}
+
+			console.log('lineGraphSocket.connected: '+lineGraphSocket.connected);
 
 			lineGraphSocket.on('connect', function (connectData) {
-					console.log('in line graph connect '+lineGraphSocket.json);
+				//	console.log('in line graph connect '+lineGraphSocket.json);
 					console.log('lineGraph client connected ');
 			//		console.log('lineGraph connected data ' + data);
 
 			});
 
-			jQuery(function ($) {
-				lineGraphSocket.on('updateData', function (data) {
-			//		console.log('lineGraph update: ' + data);
+				lineGraphSocket.on('updateData', handleLineGraphData ) ;
+				
+				function handleLineGraphData(data) {
+		//			console.log('lineGraph update: ' + data);
 					dataItem = JSON.parse(data);
-					console.log('lineGraph updateData power ' + dataItem.power);
+			//		console.log('lineGraph updateData power ' + dataItem.power);
+if ( dataItem.power.length == 0 ) {
+	console.log("zero data here" );
+}
 
 					switch (dataSelected) {
 						case 'power':
-			//				console.log('graph power '+dataSelected);
-							tick( dataItem.power, powerMax );
+					//		console.log('graph power '+dataSelected);
+							tick( +dataItem.power, powerMax );
 							break;
 						case 'current':
 			//				console.log('graph current '+dataSelected);
@@ -129,13 +149,15 @@
 							tick( dataItem.rpm, rpmMax );
 							break;
 						default:
-			//				console.log('graph default');
+					//		console.log('graph default, power is'+ dataItem.power);
 							tick( dataItem.power, powerMax );
 					}
 				 
-				});
-		
-				});
+				};
+				
+				lineGraphSocket.on('updateData', handleLineGraphData ) ;
+
+	//			});
 				
 	
 		</script>			

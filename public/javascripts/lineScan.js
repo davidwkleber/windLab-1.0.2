@@ -60,7 +60,8 @@ function tick( value, axisMax ) {
 	
   // push a new data point onto the back
  // data.push(random());
- // console.log('tick value: '+value);
+
+// console.log('tick value: '+value);
  if (value >= 0) {
   data.push(+value);
  

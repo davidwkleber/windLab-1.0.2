@@ -99,20 +99,33 @@
 			 outData = []; 
 		
 			
-			jQuery(function ($) {
+	//		jQuery(function ($) {
 				console.log("powerCurveGraph updateData");
+			if ( powerCurveGraphSocket ) {
+				console.log('in power curve graph connect '+powerCurveGraphSocket);
+				if ( powerCurveGraphSocket.connected == 'true' ) {
+								console.log('in power curve graph connect '+powerCurveGraphSocket.connected);
+				} else {
+					powerCurveGraphSocket = io.connect('http://127.0.0.1:1337');
+				}
+			} else {
+							console.log('no power curve graph socket');
 
 				var powerCurveGraphSocket = io.connect('http://127.0.0.1:1337');
-				console.log(powerCurveGraphSocket);
-			
+							console.log(' now connected, powerCurveGraphSocket.connected: '+powerCurveGraphSocket.connected);
+
+			}
+
+			console.log('powerCurveGraphSocket.connected: '+powerCurveGraphSocket.connected);
+				
 				powerCurveGraphSocket.on('connect', function (connectData) {
 						console.log('powerCurve client connected ');
 						console.log('in power graph connect '+powerCurveGraphSocket.json);
 				//		console.log('lineGraph connected data ' + data);
 
 				});
-				powerCurveGraphSocket.on('updateData', function (dataIn) {
 				
+				function handlePowerCurveData(dataIn) {
 					// save the new JSON data to a buffer
 					// this buffer is used for figuring which meanData to show
 					inData.push(dataIn);
@@ -121,7 +134,7 @@
 					}
 					// console.log("inData size: "+inData.length);
 
-	//				console.log("inData: "+inData);
+			//		console.log("inData: "+inData);
 					
 					
 				 // context.clearRect(0, 0, chart.width, chart.height);
@@ -159,8 +172,11 @@
 			// context.clearRect(0, 0, chart.width, chart.height);
 							chart.render();
 
-				});
-		});
+				};
+				
+			powerCurveGraphSocket.on('updateData', handlePowerCurveData );
+
+	//	});
 			var plotData = []; 
 				function PCrecordDataFunction() {
 					console.log('record button in Power Curve: ');
