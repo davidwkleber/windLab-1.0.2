@@ -98,7 +98,7 @@
 		
 		var dataItem;
 //	jQuery(function ($) {
-
+/*
 			if ( lineGraphSocket ) {
 				console.log('in line graph connect '+lineGraphSocket);
 				if ( lineGraphSocket.connected == 'true' ) {
@@ -120,8 +120,7 @@
 			//		console.log('lineGraph connected data ' + data);
 
 			});
-
-				lineGraphSocket.on('updateData', handleLineGraphData ) ;
+*/
 				
 				function handleLineGraphData(data) {
 		//			console.log('lineGraph update: ' + data);
@@ -156,11 +155,10 @@ if ( dataItem.power.length == 0 ) {
 				 
 				};
 				
-				lineGraphSocket.on('updateData', handleLineGraphData ) ;
-
 	//			});
 				
-	
+					dataSocket.on('updateData', handleLineGraphData ) ;
+
 		</script>			
 
 		

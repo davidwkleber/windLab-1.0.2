@@ -101,6 +101,7 @@
 			
 	//		jQuery(function ($) {
 				console.log("powerCurveGraph updateData");
+/*
 			if ( powerCurveGraphSocket ) {
 				console.log('in power curve graph connect '+powerCurveGraphSocket);
 				if ( powerCurveGraphSocket.connected == 'true' ) {
@@ -124,7 +125,7 @@
 				//		console.log('lineGraph connected data ' + data);
 
 				});
-				
+	*/			
 				function handlePowerCurveData(dataIn) {
 					// save the new JSON data to a buffer
 					// this buffer is used for figuring which meanData to show
@@ -174,7 +175,7 @@
 
 				};
 				
-			powerCurveGraphSocket.on('updateData', handlePowerCurveData );
+			dataSocket.on('updateData', handlePowerCurveData );
 
 	//	});
 			var plotData = []; 

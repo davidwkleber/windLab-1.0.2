@@ -9,7 +9,8 @@
 			recordedData = [];
 		var recordSelection = "off";
 		
-			if ( recordSocket ) {
+		/*
+		if ( recordSocket ) {
 				console.log('in line graph connect '+recordSocket);
 				if ( recordSocket.connected == 'true' ) {
 								console.log('in line graph connect '+recordSocket.connected);
@@ -29,8 +30,7 @@
 					console.log('record client connected ');
 				//	console.log('record connected data ' + data);
 			});
-
-					recordSocket.on('updateData', handleRecordData );
+*/
 					function handleRecordData(data) {
 						// console.log('record update raw: ' + data);
 						if( recordDataFlag) {
@@ -39,7 +39,8 @@
 							recordedData.push(data);
 						}
 					};	
-			
+			dataSocket.on('updateData', handleRecordData );
+
 		function recordFunction() {
 	//		console.log('start recording');
 			$('#recordButton').css('background-color','#f47121');
