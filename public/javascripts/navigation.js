@@ -20,6 +20,8 @@ $(document).ready(function() {
 					break;
 				case "powerCurveGraph":
 					window.parent.lineGraphSocket.removeListener( 'updateData', window.parent.handleLineGraphData );
+					window.parent.recordSocket.removeListener( 'updateData', window.parent.handleRecordData );
+
 					console.log("got into powerGraph");
 					window.parent.$("#rightFrame").empty();
 					window.parent.$("#rightFrame").load("/powerCurve");

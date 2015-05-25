@@ -3,7 +3,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: 100%, 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
- overflow: hidden;
+// overflow: hidden;
 }
 .bodyDiv {
 	position: absolute;
@@ -11,7 +11,7 @@ body {
 	top: 0px;
 	width: 1920px;
 	height: 1080px;
-	 overflow: hidden;
+//	 overflow: hidden;
 
 }
 

@@ -4,29 +4,42 @@
 
 		var recordDataItem;
 		var recordedData;
-		var recordsocket;
+	//	var recordSocket;
 		var recordDataFlag = false;
 			recordedData = [];
 		var recordSelection = "off";
-			
-			var recordsocket = io.connect('http://127.0.0.1:1337');
+		
+			if ( recordSocket ) {
+				console.log('in line graph connect '+recordSocket);
+				if ( recordSocket.connected == 'true' ) {
+								console.log('in line graph connect '+recordSocket.connected);
+				} else {
+					recordSocket = io.connect('http://127.0.0.1:1337');
+				}
+			} else {
+							console.log('no record  socket');
 
-			recordsocket.on('connect', function (data) {
-				//	console.log('record client connected ');
+				 var recordSocket = io.connect('http://127.0.0.1:1337');
+			}
+
+			console.log('recordSocket.connected: '+recordSocket.connected);
+	
+
+			recordSocket.on('connect', function (data) {
+					console.log('record client connected ');
 				//	console.log('record connected data ' + data);
-			
-				jQuery(function ($) {
-					recordsocket.on('updateData', function (data) {
+			});
+
+					recordSocket.on('updateData', handleRecordData );
+					function handleRecordData(data) {
 						// console.log('record update raw: ' + data);
 						if( recordDataFlag) {
 							recordDataItem = JSON.parse(data);
 						// 	console.log('record updateData.power  ' + recordDataItem.power);
 							recordedData.push(data);
 						}
-					});	
+					};	
 			
-				});
-			});	
 		function recordFunction() {
 	//		console.log('start recording');
 			$('#recordButton').css('background-color','#f47121');
