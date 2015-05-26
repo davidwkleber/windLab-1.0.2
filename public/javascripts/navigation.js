@@ -15,6 +15,10 @@ $(document).ready(function() {
 			switch(target.id) {
 				case "tourFrame":
 							console.log("got into tourFrame");	
+					window.parent.dataSocket.removeListener( 'updateData', window.parent.handleLineGraphData );
+					window.parent.dataSocket.removeListener( 'updateData', window.parent.handleRecordData );
+					window.parent.dataSocket.removeListener( 'updateData', window.parent.handlePowerCurveData );
+
 					window.parent.$("#rightFrame").empty();
 					window.parent.$("#rightFrame").load("./rightFrame/tourFrameContent/index.html");
 					break;
