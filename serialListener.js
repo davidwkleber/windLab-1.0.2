@@ -205,9 +205,16 @@ io.sockets.on('connection', function(socket){
 			sendJSON += "  \"dummyLoad\": "+dummyLoadValueText+"\n";
 			sendJSON += "}";
 			
-//		 console.log( "serialListener send JSON : \n"+sendJSON);	
+			// have to parse the string sendJSON to a JSON object in order to adjust RPM
+			dataItem = JSON.parse(sendJSON);
+			
+			// adjust RPM due to Arduino issues.
+			dataItem.rpm = Math.floor(dataItem.rpm / 1000);
 
-			io.emit('updateData', sendJSON);
+//		 console.log( "serialListener send JSON : \n"+sendJSON);
+	
+			// have to put JSON dataItem back into a string to send properly, why things cannot handle JSON objects???
+			io.emit('updateData', JSON.stringify(dataItem));
 
 			sendJSON = "";
 			sendData = "";

@@ -39,15 +39,15 @@ var dataItem;
 				function handleGuageData(data) {
 		//			console.log('gauge update ' + data);
 					dataItem = JSON.parse(data);
-		//			console.log('updateData current ' + dataItem.current);
+					console.log('updateData current ' + dataItem.rpm);
 
 				// var realRPM = Math.floor(((dataItem.rpm * 3.3)/1024)*1000); //*666.667);
 				
-				var realRPM = Math.floor(dataItem.rpm /1000);
+				// var realRPM = Math.floor(dataItem.rpm /1000);
 
 				updateGauge("current", dataItem.current);
 				updateGauge("voltage", dataItem.voltage);
-				updateGauge("rpm", realRPM);
+				updateGauge("rpm", dataItem.rpm);
 				updateGauge("power", dataItem.power);
 				 
 				};
