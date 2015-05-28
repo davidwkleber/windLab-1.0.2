@@ -17,7 +17,7 @@ router.use(function timeLog(req, res, next){
 
 // define the home page route
 router.get('/', function(req, res){
-console.log('record get');
+console.log('guages get');
  	res.render('guages');
 })
 
