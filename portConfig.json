@@ -1,11 +1,11 @@
 {
 	"stepper": {
 		"port": "COM8",
-		"baudrate": "9600"
+		"baudrate": "115200"
 	},
 	"measurement": {
 		"port": "COM9",
-		"baudrate": "9600"
+		"baudrate": "115200"
 			},
 	"loadController": {
 		"port": "COM12",
@@ -17,7 +17,7 @@
 	},
 	"acceleration": {
 		"port": "COM13",
-		"baudrate": "9600"
+		"baudrate": "115200"
 	}
 
 }

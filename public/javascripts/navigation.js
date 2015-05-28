@@ -1,9 +1,4 @@
-//	<script src='/lib/socket.io/socket.io.js'></script>
 
-//	powerCurveGraphSocket = io.connect('http://127.0.0.1:1337');
-// lineGraphSocket = io.connect('http://127.0.0.1:1337');
-
-// var lineGraphSocket;
 
 $(document).ready(function() {
 	    
@@ -21,6 +16,10 @@ $(document).ready(function() {
 
 					window.parent.$("#rightFrame").empty();
 					window.parent.$("#rightFrame").load("./rightFrame/tourFrameContent/index.html");
+					
+					window.parent.$("#guageDiv").empty();
+					window.parent.$("#guageDiv").load("/guages");
+
 					break;
 				case "powerCurveGraph":
 					window.parent.dataSocket.removeListener( 'updateData', window.parent.handleLineGraphData );
@@ -29,12 +28,20 @@ $(document).ready(function() {
 					console.log("got into powerGraph");
 					window.parent.$("#rightFrame").empty();
 					window.parent.$("#rightFrame").load("/powerCurve");
+					
+					window.parent.$("#guageDiv").empty();
+					window.parent.$("#guageDiv").load("/guages");
+
 					break;
 				case "timeDomainGraph":
 					window.parent.dataSocket.removeListener( 'updateData', window.parent.handlePowerCurveData );
 					console.log("got into timeGraph");
 					window.parent.$("#rightFrame").empty();
 					window.parent.$("#rightFrame").load("/lineGraph");
+					
+					window.parent.$("#guageDiv").empty();
+					window.parent.$("#guageDiv").load("/guages");
+
 				break;
 				default :
 					console.log("id is: "+target.id);

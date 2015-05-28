@@ -17,6 +17,7 @@ var pitchAngle = require('./routes/pitchAngle');
 var windSpeed = require('./routes/windSpeed');
 var dummyLoad = require('./routes/dummyLoad');
 var dataInput = require('./routes/dataInput');
+var guages = require('./routes/guages');
 
 var showDataFrame = require('./routes/showDataFrame');
 var powerCurve = require('./routes/powerCurve');
@@ -55,6 +56,7 @@ app.use('/windSpeed', windSpeed);
 app.use('/dataInput', dataInput);
 app.use('/showDataFrame', showDataFrame);
 app.use('/powerCurve', powerCurve);
+app.use('/guages', guages);
 
 app.use('/dummyLoad', dummyLoad);
 app.use('/lineGraph', lineGraph);
@@ -63,6 +65,7 @@ app.use('/record', record);
 app.get('/recordData', record.recordData);
 app.get('/showDataFrame', showDataFrame.get);
 app.get('/powerCurve', powerCurve.get);
+app.get('/guages', guages.get);
 
 app.post('/recordData', record.recordData);
 app.post('/stopRecording', record.stopRecording);

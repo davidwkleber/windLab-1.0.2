@@ -184,7 +184,6 @@ io.sockets.on('connection', function(socket){
 		*/
 		var windSpeedValueText = reutrnWindSpeed(windSpeedValue);
 
-		
 		/* do the same for the pitch angle.
 		*/
 		var pitchAngleValueText = returnPitchAngle(pitchAngleValue);
@@ -195,8 +194,12 @@ io.sockets.on('connection', function(socket){
 		var dummyLoadValueText = returnDummyLoad(dummyLoadValue);
 		
 			// console.log('SEND update data : '+sendData);
+			
+			//start with the date
 			var sendJSON = '{\n  \"date\": \"'+formatNow+'\",';
+			// put in the JSON from the serial input next
 			sendJSON += sendData.substring(1, sendData.length-3);
+			// now add the info local to the interface, wind speed, pitch angle and dummy load
 			sendJSON += ",\n  \"windSpeed\": "+windSpeedValueText+",\n";
 			sendJSON += "  \"pitchAngle\": "+pitchAngleValueText+",\n";
 			sendJSON += "  \"dummyLoad\": "+dummyLoadValueText+"\n";
