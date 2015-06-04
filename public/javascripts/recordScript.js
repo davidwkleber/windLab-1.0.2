@@ -8,35 +8,20 @@
 		var recordDataFlag = false;
 			recordedData = [];
 		var recordSelection = "off";
-		
-		/*
-		if ( recordSocket ) {
-				console.log('in line graph connect '+recordSocket);
-				if ( recordSocket.connected == 'true' ) {
-								console.log('in line graph connect '+recordSocket.connected);
-				} else {
-					recordSocket = io.connect('http://127.0.0.1:1337');
-				}
-			} else {
-							console.log('no record  socket');
+					var theStart = new Date().getSeconds();
 
-				 var recordSocket = io.connect('http://127.0.0.1:1337');
-			}
 
-			console.log('recordSocket.connected: '+recordSocket.connected);
-	
-
-			recordSocket.on('connect', function (data) {
-					console.log('record client connected ');
-				//	console.log('record connected data ' + data);
-			});
-*/
 					function handleRecordData(data) {
 						// console.log('record update raw: ' + data);
 						if( recordDataFlag) {
 							recordDataItem = JSON.parse(data);
 						// 	console.log('record updateData.power  ' + recordDataItem.power);
 							recordedData.push(data);
+					
+							var theVal = new Date().getSeconds() - theStart; 
+							console.log(" the recordTime is: "+theVal);
+							$("#recordTime span").text(theVal+" sec");
+ 
 						}
 					};	
 			dataSocket.on('updateData', handleRecordData );
@@ -45,6 +30,10 @@
 	//		console.log('start recording');
 			$('#recordButton').css('background-color','#f47121');
 			recordDataFlag = true;
+			 theStart = new Date().getSeconds();
+
+			$("#recordTime span").text("0 sec");
+
 		}
 		function stopRecordFunction() {
 		//	console.log('stop recording');
@@ -55,6 +44,8 @@
 
 			$('#recordButton').css('background-color','#e8e8e8');
 			// recordsocket.disconnect();
+			
+			$("#recordTime span").text("0 sec");
 		}
 		
 		function saveDataFunction() {

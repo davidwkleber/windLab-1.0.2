@@ -39,8 +39,6 @@
   	<div class="saveDataButtonDiv">
 		<button class="saveDataButton" id="saveDataButton" name="saveDataButton" onclick="saveDataFunction()">Save</button>
 	</div>
-	<div class="recordButtonsDiv" name="recordButtonsDiv" id="recordButtonsDiv" >
-	</div>
 
 		<div class="recordButtons"  id="recordButtons" name="recordButtons">
     <input type="checkbox" name="recordButtons-checkbox" class="recordButtons-checkbox" id="myrecordButtons" checked>
@@ -48,11 +46,34 @@
         <span class="recordButtons-inner"></span>
         <span class="recordButtons-switch"></span>
     </label>
-	<!--
-	-->
+	</div>
 
-		<script type="text/javascript" src="/javascripts/recordScript.js"></script>
+
+<p id="recordTime" ><span> sec</span></p>	
+<!-- 
+<div id="recordTime">
+<table bgcolor="#c0c0c0" align="center" border="0" width="140" cellspacing="0">
+  <tr>
+     <td align="center">
+       <font face="verdana, arial, helvetica, sans-serif" size="2">
+       <b>STOPWATCH</b></font>
+     </td>
+  </tr>
+  <tr>
+     <td align="center">
+       <form name="clock">
+       <input type="text" size="12" name="stwa" value="00 : 00 : 00" style="text-align:center" /><br />
+       <input type="button" name="theButton" onClick="stopwatch(this.value);" value="Start" />
+       <input type="button" value="Reset" onClick="resetIt();reset();" />
+       </form>
+     </td>
+  </tr>     
+</table>
 </div>
+<script type="text/javascript" src="/javascripts/recordTimer.js"></script>
+--> 
+
+<script type="text/javascript" src="/javascripts/recordScript.js"></script>
 
 		<script>
 		var dataSelected = 'power';
@@ -97,30 +118,7 @@
 		
 		
 		var dataItem;
-//	jQuery(function ($) {
-/*
-			if ( lineGraphSocket ) {
-				console.log('in line graph connect '+lineGraphSocket);
-				if ( lineGraphSocket.connected == 'true' ) {
-								console.log('in line graph connect '+lineGraphSocket.connected);
-				} else {
-					lineGraphSocket = io.connect('http://127.0.0.1:1337');
-				}
-			} else {
-							console.log('no line graph socket');
 
-				 var lineGraphSocket = io.connect('http://127.0.0.1:1337');
-			}
-
-			console.log('lineGraphSocket.connected: '+lineGraphSocket.connected);
-
-			lineGraphSocket.on('connect', function (connectData) {
-				//	console.log('in line graph connect '+lineGraphSocket.json);
-					console.log('lineGraph client connected ');
-			//		console.log('lineGraph connected data ' + data);
-
-			});
-*/
 				
 				function handleLineGraphData(data) {
 		//			console.log('lineGraph update: ' + data);
