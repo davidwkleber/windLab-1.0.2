@@ -81,7 +81,7 @@
 				},
 				// data: [meanDataLine, data]
 				   data: [ meanDataSeries, dataSeries ]
-			});
+		});
 			
 		 chart.render();
 	//	}
@@ -247,6 +247,29 @@ console.log("meanData: data to meanData: "+JSON.stringify(dataTomeanData[i]));
 
 				
 
+			}
+
+	function computeMean(dataToMean) {
+				var sum = [];
+			   var sumPower = 0;
+			   var sumRPM = 0;
+console.log("dataToMean.length "+dataToMean.length);
+				for(var i = 0; i < dataToMean.length; i++) {
+console.log("meanData: data to mean: "+JSON.stringify(dataToMean[i]));
+					
+					thisDataItem = JSON.parse(dataToMean[i]);
+							sumPower += dataItem.power;
+							sumRPM += dataItem.rpm;
+
+				};
+				
+				var y = (sumPower / dataToMean.length);
+				var x = (sumRPM / dataToMean.length);
+				
+				thisDataItem.power = y;
+				thisDataItem.RPM = x;
+				
+				return thisDataItem;
 			}
 
 
