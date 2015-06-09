@@ -88,7 +88,7 @@ function tick( value, axisMax ) {
     .transition()
       .duration(50)
       .ease("linear")
-    .attr("transform", "translate(" + x(-1) + ",0)")
+      .attr("transform", "translate(" + x(-1) + ",0)")
       .each("end", 00);
  
   // pop the old data point off the front

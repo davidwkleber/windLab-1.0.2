@@ -18,7 +18,7 @@
 						// 	console.log('record updateData.power  ' + recordDataItem.power);
 							recordedData.push(data);
 					
-							var theVal = (new Date() - theStart)/1000; 
+							var theVal = new Date().getSeconds() - theStart; 
 							console.log(" the recordTime is: "+theVal);
 							$("#recordTime span").text(theVal+" sec");
  
@@ -30,7 +30,7 @@
 	//		console.log('start recording');
 			$('#recordButton').css('background-color','#f47121');
 			recordDataFlag = true;
-			 theStart = new Date();
+			 theStart = new Date().getSeconds();
 
 			$("#recordTime span").text("0 sec");
 
