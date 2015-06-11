@@ -68,12 +68,22 @@
 				animationEnabled: true,
 
 				axisY:{
+				labelFontFamily: "sans-serif",
+				labelFontSize: 10,
+				 labelFontColor: "black",
+				lineColor: "black",
+				tickColor: "black",
 					includeZero: false,
 					minimum: 0,
 					maximum: 1500,
 					interval: 250
 				},
 				axisX:{
+				labelFontFamily: "sans-serif",
+				labelFontSize: 10,
+				labelFontColor: "black",
+				lineColor: "black",
+				tickColor: "black",
 					labelAngel: 30,
 					minimum: 0,
 					maximum: 8000,
@@ -116,8 +126,8 @@
 				chart.width = chart.width;
 
 			//	console.log('powerCurve update: ' + dataIn);
-					dataItem = JSON.parse(dataIn);
-					
+				//	dataItem = JSON.parse(dataIn);
+					dataItem = computeMean(inData);
 						dataPoints.push({
 							x: dataItem.rpm,
 							y: dataItem.power,
