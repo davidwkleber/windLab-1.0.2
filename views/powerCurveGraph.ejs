@@ -23,7 +23,6 @@
 
 // window.onload = function () {
 			var data = []; 
-		//	var meanDataLine = [];
 			var dataSeries = { type: "scatter" };
 			 var meanDataSeries = {type: "line" };
 			var dataPoints = [];
@@ -143,19 +142,6 @@
 				
 				 dataSeries.dataPoints = dataPoints;
 				
-				/*
-				data.push(dataSeries);
-				if (data.length > limit)
-				{
-					data.shift();				
-				}
-				*/
-
-				//	console.log("data pushed "+data.length);		
-				//										console.log("data pushed "+data);		
-
-
-
 			// context.clearRect(0, 0, chart.width, chart.height);
 							chart.render();
 
@@ -164,14 +150,11 @@
 			dataSocket.on('updateData', handlePowerCurveData );
 
 	//	});
-		//	var plotData = []; 
 				function PCrecordDataFunction() {
 					console.log('record button in Power Curve: ');
 					console.log("in RECORD inData size: "+inData.length);
 					meanDataData(inData);
 					console.log("in Record: meanDataPoint: "+meanData);
-				//	plotData.push(meanData);
-							//				console.log("in RECORD plotData: "+plotData);
 						
 					outData.push(inData);
 																//	console.log("in RECORD outData : "+outData);
@@ -233,11 +216,6 @@
 				var y = (sumPower / dataTomeanData.length);
 				var x = (sumRPM / dataTomeanData.length);
 
-	/*		meanDataLine.push( {
-				x :  x,
-				y : y
-			});
-			*/
 			meanData.push( {
 				x: x,
 				y: y
@@ -253,9 +231,7 @@
 		//	}
 			meanDataSeries.dataPoints = meanData;
 			console.log("meanData: "+JSON.stringify(meanData));
-			
-			// meanDataLine.push(meanDataSeries);
-			
+						
 			console.log("meanDataSeries Line "+JSON.stringify(meanDataSeries));
 			console.log("data current point "+JSON.stringify(data));
 
