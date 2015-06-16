@@ -23,7 +23,7 @@
 
 // window.onload = function () {
 			var data = []; 
-			var meanDataLine = [];
+		//	var meanDataLine = [];
 			var dataSeries = { type: "scatter" };
 			 var meanDataSeries = {type: "line" };
 			var dataPoints = [];
@@ -42,7 +42,7 @@
 				y: 0
 			});
 				meanDataSeries.dataPoints = meanData;
-				meanDataLine.push(meanDataSeries);
+		//		meanDataLine.push(meanDataSeries);
 				
 				 dataSeries.dataPoints = dataPoints;
 				data.push(dataSeries);
@@ -105,7 +105,7 @@
 			var dataItem;
 					// set of data for each meanData point calculation
 			 inData = []; 
-		var inData_limit = 10;
+		var inData_limit = 100;
 			 outData = []; 
 		
 			
@@ -143,14 +143,16 @@
 				
 				 dataSeries.dataPoints = dataPoints;
 				
-				
+				/*
 				data.push(dataSeries);
 				if (data.length > limit)
 				{
 					data.shift();				
 				}
-								//	console.log("data pushed "+data.length);		
-								//										console.log("data pushed "+data);		
+				*/
+
+				//	console.log("data pushed "+data.length);		
+				//										console.log("data pushed "+data);		
 
 
 
@@ -162,13 +164,13 @@
 			dataSocket.on('updateData', handlePowerCurveData );
 
 	//	});
-			var plotData = []; 
+		//	var plotData = []; 
 				function PCrecordDataFunction() {
 					console.log('record button in Power Curve: ');
 					console.log("in RECORD inData size: "+inData.length);
 					meanDataData(inData);
 					console.log("in Record: meanDataPoint: "+meanData);
-						plotData.push(meanData);
+				//	plotData.push(meanData);
 							//				console.log("in RECORD plotData: "+plotData);
 						
 					outData.push(inData);
@@ -185,7 +187,7 @@
 				
 				function PCsaveDataFunction() {
 				// console.log('Save button in Power Curve: ');
-				//	console.log("in SAVE inData size: "+outData.length);
+					console.log("in SAVE inData size: "+outData.length);
 				//	console.log("in SAVE outData : "+JSON.stringify(outData));															
 
 			// var json = JSON.stringify(data);
@@ -206,8 +208,10 @@
 			a.textContent = "Download data as JSON";
 			
 			saveAs(blob,fileName);
-	
+			meanData = [];
 			outData = [];
+			console.log("save data");
+
 		}
 		
 		
@@ -216,9 +220,9 @@
 				var sum = [];
 			   var sumPower = 0;
 			   var sumRPM = 0;
-console.log("dataTomeanData.length "+dataTomeanData.length);
+// console.log("dataTomeanData.length "+dataTomeanData.length);
 				for(var i = 0; i < dataTomeanData.length; i++) {
-console.log("meanData: data to meanData: "+JSON.stringify(dataTomeanData[i]));
+// console.log("meanData: data to meanData: "+JSON.stringify(dataTomeanData[i]));
 					
 					thisDataItem = JSON.parse(dataTomeanData[i]);
 							sumPower += dataItem.power;
@@ -250,9 +254,9 @@ console.log("meanData: data to meanData: "+JSON.stringify(dataTomeanData[i]));
 			meanDataSeries.dataPoints = meanData;
 			console.log("meanData: "+JSON.stringify(meanData));
 			
-			meanDataLine.push(meanDataSeries);
+			// meanDataLine.push(meanDataSeries);
 			
-			console.log("meanDataSeries Line "+JSON.stringify(meanDataLine));
+			console.log("meanDataSeries Line "+JSON.stringify(meanDataSeries));
 			console.log("data current point "+JSON.stringify(data));
 
 				
@@ -260,12 +264,12 @@ console.log("meanData: data to meanData: "+JSON.stringify(dataTomeanData[i]));
 			}
 
 	function computeMean(dataToMean) {
-				var sum = [];
+			var sum = [];
 			   var sumPower = 0;
 			   var sumRPM = 0;
-console.log("dataToMean.length "+dataToMean.length);
+// console.log("dataToMean.length "+dataToMean.length);
 				for(var i = 0; i < dataToMean.length; i++) {
-console.log("meanData: data to mean: "+JSON.stringify(dataToMean[i]));
+// console.log("meanData: data to mean: "+JSON.stringify(dataToMean[i]));
 					
 					thisDataItem = JSON.parse(dataToMean[i]);
 							sumPower += dataItem.power;
