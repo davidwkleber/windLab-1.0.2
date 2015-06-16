@@ -46,7 +46,7 @@ var WSframeToPlay = 6;
 var WScurrentValue = 0;
 var WSnumFrames = 160;
 var WSsaveValue = 0;
-
+var WS_fanOn = "true";
 		//setup a variable to store our last position
 var last_position = {},
 $output       = $('#output');
@@ -160,6 +160,7 @@ WSinstance.currentFrame = WSframeToPlay;
 				
 				
 				$('#WSupButton').click(function(TouchEvent){
+					if( WS_fanOn == "true" ) {
 								  $(".WSinitButton-checkbox").prop("checked", "on")
 
 				  	event.preventDefault();
@@ -184,9 +185,10 @@ WSinstance.currentFrame = WSframeToPlay;
 		//				console.log('client windSpeed post done ');
 					});
 					};
+					}
 				});
 			$('#WSdownButton').click(function(TouchEvent){
-
+				if( WS_fanOn == "true" ) {
 							  $(".WSinitButton-checkbox").prop("checked", "on")
 
 			  	event.preventDefault();
@@ -209,6 +211,7 @@ WSinstance.currentFrame = WSframeToPlay;
 		//				console.log('client windSpeed post done ');
 					});
 				};
+				}
 			});	
 
 		$( ".WSinitButton-checkbox" ).on( "click", function() {
@@ -217,7 +220,7 @@ WSinstance.currentFrame = WSframeToPlay;
 				WSinitSelection = $(".WSinitButton-checkbox:checked").val();
 			//	console.log("init on? "+WSinitSelection);
 				if (WSinitSelection == "on") {
-				
+					WS_fanOn = "true";
 				WScurrentValue = WSsaveValue;
 				console.log("save "+WScurrentValue);
 				WSinstance.currentFrame = (WScurrentValue/100)*WSnumFrames;
@@ -230,6 +233,7 @@ WSinstance.currentFrame = WSframeToPlay;
 					$(".WScurrentValue span").text(WSvalueText+"m/s");
                     $(".WScurrentFrame span").text(WSinstance.currentFrame);
 				} else {
+					WS_fanOn = "false";
 	//				console.log("INIT ON");
 				WSsaveValue = WScurrentValue;
 	console.log("save "+WScurrentValue);
