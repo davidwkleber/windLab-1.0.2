@@ -2,7 +2,8 @@ var limit = 500;
  var n = 40,
     random = d3.random.normal(0, .2),
    data = d3.range(limit).map(random);
-// var data;
+   
+ // var data=[];
  
 var margin = {top: 20, right: 20, bottom: 20, left: 50},
 	width = 1050 - margin.left - margin.right,

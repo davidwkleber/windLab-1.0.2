@@ -111,7 +111,7 @@
 		
 			
 	
-				function handlePowerCurveData(dataIn) {
+		function handlePowerCurveData(dataIn) {
 					// save the new JSON data to a buffer
 					// this buffer is used for figuring which meanData to show
 					inData.push(dataIn);
@@ -147,12 +147,12 @@
 			// context.clearRect(0, 0, chart.width, chart.height);
 							chart.render();
 
-				};
+		};
 				
 			dataSocket.on('updateData', handlePowerCurveData );
 
 	//	});
-				function PCrecordDataFunction() {
+		function PCrecordDataFunction() {
 					console.log('record button in Power Curve: ');
 					console.log("in RECORD inData size: "+inData.length);
 					meanDataData(inData);
@@ -170,7 +170,7 @@
 
 				}
 				
-				function PCsaveDataFunction() {
+	function PCsaveDataFunction() {
 				// console.log('Save button in Power Curve: ');
 					console.log("in SAVE inData size: "+outData.length);
 				//	console.log("in SAVE outData : "+JSON.stringify(outData));															
@@ -195,8 +195,9 @@
 			saveAs(blob,fileName);
 			meanData = [];
 			outData = [];
+			inData = [];
 			console.log("save data");
-
+meanDataSeries.dataPoints = meanData;
 		}
 		
 		
