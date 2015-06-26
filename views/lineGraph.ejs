@@ -1,6 +1,6 @@
 <!doctype html>
 	<div id="lineGraphDiv" >
-	<h1 id=lineGraphTitle>power</h1>
+	<h1 id=lineGraphTitle>rpm</h1>
 	<script type="text/javascript" src="/javascripts/lineScan.js"></script>
 
 
@@ -19,11 +19,11 @@
 				<label for="voltage">Voltage</label>
 				</span>
 				<span>
-				<input type="radio"  class="dataSelectorRadio" name="measuredData" id="power" value="power" checked=true>
+				<input type="radio"  class="dataSelectorRadio" name="measuredData" id="power" value="power" >
 				<label for="power">Power</label>
 				</span>
 				<span>
-				<input type="radio"  class="dataSelectorRadio" name="measuredData" id="rpm" value="rpm">
+				<input type="radio"  class="dataSelectorRadio" name="measuredData" id="rpm" value="rpm" checked=true>
 				<label for="rpm">RPM</label>
 				</span>
 			<div id="selectedData"></div>
@@ -76,14 +76,15 @@
 <script type="text/javascript" src="/javascripts/recordScript.js"></script>
 
 		<script>
-		var dataSelected = 'power';
+		var dataSelected = 'rpm';
 		
 		var powerMin = 0; 
 		var powerMax = 1500;
 		var voltageMax = 15000;
 		var currentMax = 1000;
 		var rpmMax = 5000;
-		
+		changeAxis( rpmMax );
+
 			$( ".dataSelectorRadio" ).on( "click", function() {
 
 	//		$("#selectedData").html($( "input:checked" ).val() + " is checked!" );
@@ -129,7 +130,7 @@ if ( dataItem.power.length == 0 ) {
 }
 
 					switch (dataSelected) {
-						case 'power':
+						case 'rpm':
 					//		console.log('graph power '+dataSelected);
 							tick( +dataItem.power, powerMax );
 							break;

@@ -119,6 +119,9 @@ io.sockets.on('connection', function(socket){
 
         sleep(2000, function() {
 		});
+		
+			serialListener.write('DI', 'AA');
+
 		//asserting();
 	});
     WSserialPort.on("open", function () {
