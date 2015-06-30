@@ -122,7 +122,8 @@
 
 				
 				function handleLineGraphData(data) {
-		//			console.log('lineGraph update: ' + data);
+				//	console.log('lineGraph dataSelected: '+dataSelected);
+				//	console.log('lineGraph update: ' + data);
 					dataItem = JSON.parse(data);
 			//		console.log('lineGraph updateData power ' + dataItem.power);
 if ( dataItem.power.length == 0 ) {
@@ -130,8 +131,8 @@ if ( dataItem.power.length == 0 ) {
 }
 
 					switch (dataSelected) {
-						case 'rpm':
-					//		console.log('graph power '+dataSelected);
+						case 'power':
+						//	console.log('graph rpm '+dataSelected);
 							tick( +dataItem.power, powerMax );
 							break;
 						case 'current':
@@ -144,7 +145,7 @@ if ( dataItem.power.length == 0 ) {
 							break;
 						case 'rpm':
 							// var realRPM = Math.floor(((dataItem.rpm * 3.3)/1024)*1000); //*666.667);
-			//				console.log('graph rpm '+dataSelected);
+							console.log('graph rpm '+dataItem.rpm);
 							tick( dataItem.rpm, rpmMax );
 							break;
 						default:

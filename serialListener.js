@@ -120,7 +120,7 @@ io.sockets.on('connection', function(socket){
         sleep(2000, function() {
 		});
 		
-			serialListener.write('DI', 'AA');
+			// serialListener.write('DI', 'AA');
 
 		//asserting();
 	});
@@ -159,8 +159,8 @@ io.sockets.on('connection', function(socket){
  var sendData = '';
  var receivedData = '';
  var chunksIn = 0;
- 
-    DIserialPort.on('data', function(data) {
+ function handleDIserialPortData(data) {
+    // DIserialPort.on('data', function(data) {
 //			console.log('DataInput : '+data);
 
 		chunksIn = chunksIn+1;
@@ -227,20 +227,28 @@ io.sockets.on('connection', function(socket){
 
 
 		};
-	}); 
+	}; 
  
  
- 
-    WSserialPort.on('data', function(data) {
+ function handleWSserialPortData(data) {
+ //   WSserialPort.on('data', function(data) {
          receivedData += data.toString();
-	}); 
-    PAserialPort.on('data', function(data) {
+	}; 
+	
+	function handlePAserialPortData(data) {
+ //   PAserialPort.on('data', function(data) {
          receivedData += data.toString();
-	}); 
-    DLserialPort.on('data', function(data) {
+	}; 
+	
+	function handleDLserialPortData(data) {
+  //  DLserialPort.on('data', function(data) {
          receivedData += data.toString();
-	}); 
+	}; 
    
+DIserialPort.on('data', handleDIserialPortData) ;
+WSserialPort.on('data', handleWSserialPortData) ;
+PAserialPort.on('data', handlePAserialPortData) ;
+DLserialPort.on('data', handleDLserialPortData) ;
 
 };
 
