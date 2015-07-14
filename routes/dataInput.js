@@ -50,7 +50,7 @@ router.use(function timeLog(req, res, next){
 // define the home page route
 router.get('/', function(req, res){
 console.log('dataInput get');
- 	res.redirect('index');
+ 	// res.redirect('index');
 })
 
 router.post('/', function(req, res, next){

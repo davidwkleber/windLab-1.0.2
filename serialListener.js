@@ -219,8 +219,16 @@ io.sockets.on('connection', function(socket){
 			// have to put JSON dataItem back into a string to send properly, why things cannot handle JSON objects???
 			io.emit('updateData', JSON.stringify(dataItem));
 
-			sendJSON = "";
-			sendData = "";
+			sendJSON = null;
+			sendData = null;
+			dummyLoadValueText = null;
+			pitchAngleValueText = null;
+			windSpeedValueText = null;
+			now = null;
+			receivedData = null;
+			jsonClosed = null;
+			jsonOpened = null;
+			
 			// console.log("in SerialListener: the wind speed: "+windSpeedValue);
 			// console.log("in SerialListener: the pitch angle: "+pitchAngleValue);
 			// console.log("in SerialListener: the dummy load: "+dummyLoadValue);
