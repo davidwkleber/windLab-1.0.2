@@ -15,7 +15,7 @@ max: undefined != max ? max : 500,
 minorTicks: 5,
 
 		labelFormat					: d3.format(',g'),
-		labelInset					: 10,
+		labelInset					: 100,
         rotateLabels                : false
 
 }
