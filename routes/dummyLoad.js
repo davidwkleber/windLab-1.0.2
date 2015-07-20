@@ -42,7 +42,7 @@ console.log('dummyLoad value in post: ', req.param('dummyLoadValue', null));
 	var serialCall = 'I' + serialCallValue + '\n';
 
 		console.log('dummyLoad serialCall: '+serialCall);
-	//	res.render('index', {title: 'Dummy Load', seeValue: dummyLoadValue });
+		res.render('index', {title: 'Dummy Load', seeValue: dummyLoadValue });
  
 			console.log('dummyLoad rendered index: '+dummyLoadValue);
 
