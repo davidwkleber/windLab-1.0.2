@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// var serialListener = require('./serialListener');
+var serialListener = require('./serialListener');
+serialListener();
 
  dataFrameContent = 'welcome';
  // dataFrameContent = 'lineGraph';
@@ -18,7 +19,7 @@ var routes = require('./routes/index');
 var pitchAngle = require('./routes/pitchAngle');
 var windSpeed = require('./routes/windSpeed');
 var dummyLoad = require('./routes/dummyLoad');
-var dataInput = require('./routes/dataInput');
+// var dataInput = require('./routes/dataInput');
 var guages = require('./routes/guages');
 
 var showDataFrame = require('./routes/showDataFrame');
@@ -53,7 +54,7 @@ app.use('index', routes);
 
 app.use('/pitchAngle', pitchAngle);
 app.use('/windSpeed', windSpeed);
-app.use('/dataInput', dataInput);
+// app.use('/dataInput', dataInput);
 app.use('/showDataFrame', showDataFrame);
 app.use('/powerCurve', powerCurve);
 app.use('/guages', guages);

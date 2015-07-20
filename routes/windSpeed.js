@@ -46,7 +46,7 @@ console.log('windSpeed value in post: ', req.param('windSpeedValue', null));
 	var serialCall = 'F' + serialCallValue + '%\n';
 
 		console.log('windSpeed serialCall: '+serialCall);
-		res.render('index', {title: 'Wind Lab', seeValue: windSpeedValue });
+	//	res.render('index', {title: 'Wind Lab', seeValue: windSpeedValue });
  
 			console.log('windSpeed rendered index: '+windSpeedValue);
 

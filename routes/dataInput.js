@@ -2,6 +2,7 @@
 //
 // module for setting Wind Speed of the wind fan
 //
+console.log("DataInput called");
 var DIserialListener = require('../serialListener');
 
 DIserialListener();

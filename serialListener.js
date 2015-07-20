@@ -1,7 +1,7 @@
 
 module.exports = serialListener;
 
-var app = require('./app');
+// var app = require('./app');
 var portConfig = require('./portConfig.json');
 
 var serialport = require("serialport");
@@ -68,11 +68,11 @@ function sleep(time, callback) {
 };
 
 
-
+/*
 var socketServer;
 var socketio = require('socket.io');
 socketServer = socketio.listen(app, true);
-
+*/
 function serialListener()
 {	//
 	//
@@ -82,7 +82,7 @@ function serialListener()
     var sendData = "";
 	var delimiter = "\n";
 	
- // console.log('serialListenerInit called ');
+ console.log('serialListenerInit called ');
 
 var io = require('socket.io').listen(1337);
 
@@ -120,6 +120,8 @@ io.sockets.on('connection', function(socket){
         sleep(2000, function() {
 		});
 		
+		serialListener.write('DI', 'AA');
+
 			// serialListener.write('DI', 'AA');
 
 		//asserting();
@@ -153,7 +155,8 @@ io.sockets.on('connection', function(socket){
 		});
 		
 	});
-	
+			
+
   }); 
  
  var sendData = '';
@@ -265,7 +268,9 @@ serialListener.doSomething = function() {
 	console.log('serialListener.doSomething here');
 };
 
+// function write (id, value) {
 serialListener.write = function( id, value ) {
+	console.log('serialListener write value: '+value);
 
      sleep(200, function() {
     }); 

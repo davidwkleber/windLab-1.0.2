@@ -12,7 +12,12 @@ size: 200,
 label: label,
 min: undefined != min ? min : 0,
 max: undefined != max ? max : 500,
-minorTicks: 5
+minorTicks: 5,
+
+		labelFormat					: d3.format(',g'),
+		labelInset					: 10,
+        rotateLabels                : false
+
 }
 
 var range = config.max - config.min;
@@ -283,7 +288,7 @@ function Gauge(placeholderName, configuration)
 	{
 		var pointerContainer = this.body.select(".pointerContainer");
 		
-		pointerContainer.selectAll("text").text(Math.round(value));
+//		pointerContainer.selectAll("text").text(Math.round(value));
 	
 		var pointer = pointerContainer.selectAll("path");
 		pointer.transition()
