@@ -13,7 +13,7 @@ label: label,
 min: undefined != min ? min : 0,
 max: undefined != max ? max : 500,
 minorTicks: 5,
-
+//		majorTicks						: 15,
 		labelFormat					: d3.format(',g'),
 		labelInset					: 100,
         rotateLabels                : false
@@ -89,7 +89,10 @@ function Gauge(placeholderName, configuration)
 		this.config.majorTicks = configuration.majorTicks || 5;
 		this.config.minorTicks = configuration.minorTicks || 2;
 		
-		this.config.greenColor 	= configuration.greenColor || "#109618";
+				this.config.labelFormat = configuration.labelFormat;
+				this.config.ticks = configuration.ticks;
+
+				this.config.greenColor 	= configuration.greenColor || "#109618";
 		this.config.yellowColor = configuration.yellowColor || "#FF9900";
 		this.config.redColor 	= configuration.redColor || "#DC3912";
 		
