@@ -27,7 +27,7 @@
 				if ( measurementData.length > measurementData_limit ) {
 					measurementData.shift();
 				}
-				console.log("handleSocketData "+ measurementData);
+				// console.log("handleSocketData "+ measurementData);
 			
 			};
 			
