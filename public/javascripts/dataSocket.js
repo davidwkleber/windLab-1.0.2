@@ -31,4 +31,4 @@
 			
 			};
 			
-			dataSocket.on('updateData', handleSocketData );
+			// dataSocket.on('updateData', handleSocketData );
