@@ -18,3 +18,17 @@
 			dataSocket.on('connect', function (connectData) {
 					console.log('dataSocket client connected ');
 			});
+			
+			var measurementData_limit = 500;
+			var measurementData = [];
+			
+			function handleSocketData(dataIn) {
+				measurementData.push(dataIn);
+				if ( measurementData.length > measurementData_limit ) {
+					measurementData.shift();
+				}
+				console.log("handleSocketData "+ measurementData);
+			
+			};
+			
+			dataSocket.on('updateData', handleSocketData );
